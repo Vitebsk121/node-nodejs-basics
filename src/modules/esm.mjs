@@ -3,12 +3,15 @@ import { release, version } from 'os';
 import { createServer as createServerHttp } from 'http';
 import './files/c.js';
 
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
+
 const random = Math.random();
 
 
 const unknownObject = random > 0.5 ?
-  await import('./files/a.json', {assert: {type: 'json'}}) :
-  await import('./files/b.json', {assert: {type: 'json'}});
+  require('./files/a.json') :
+  require('./files/b.json');
 
 console.log(`Release ${release()}`);
 console.log(`Version ${version()}`);
