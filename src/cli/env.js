@@ -1,4 +1,4 @@
-import { env } from 'node:process';
+const { env } = process;
 
 const parseEnv = () => {
     const rssEnvVariables = [];

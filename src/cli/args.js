@@ -1,5 +1,4 @@
-import { argv } from 'node:process';
-
+const { argv } = process;
 
 const parseArgs = () => {
     const resultArgs = [];
