@@ -5,8 +5,8 @@ import { getPath } from "../helpers/helpers.js";
 const workerFuncPath = getPath(import.meta.url, ['worker.js']);
 
 const performCalculations = async () => {
-    const cpuCoreCount = cpus();
-    const workersList = cpuCoreCount.map((_, i) => {
+    const cpuCoreInfo = cpus();
+    const workersList = cpuCoreInfo.map((_, i) => {
       const workerData = 10 + i;
       return  new Promise((res, rej) => {
         const worker = new Worker(workerFuncPath, { workerData });
@@ -26,7 +26,6 @@ const performCalculations = async () => {
     ))
 
     console.log(result);
-
 };
 
 await performCalculations();
